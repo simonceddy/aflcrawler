@@ -1,7 +1,7 @@
 <?php
 namespace AflCrawler\Model;
 
-class MatchPlayer
+class MatchPlayer implements ModelInterface
 {
     /**
      * The Match object

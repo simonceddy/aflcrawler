@@ -1,7 +1,7 @@
 <?php
 namespace AflCrawler\Model;
 
-class Match
+class Match implements ModelInterface
 {
     /**
      * The Home Team

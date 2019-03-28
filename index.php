@@ -12,5 +12,5 @@ file_put_contents(__DIR__.'/storage/2018.html', $html); */
 $html = file_get_contents(__DIR__.'/storage/2018.html');
 $crawler = new AflCrawler\Crawler\SeasonTotalsCrawler;
 $result = $crawler->crawl($html);
-dd($crawler);
-//dd(end($result)['model']);
+//dd($crawler);
+dd($result['teams']['sk']);

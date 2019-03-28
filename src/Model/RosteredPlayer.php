@@ -83,4 +83,52 @@ class RosteredPlayer implements ModelInterface
 
         return $this;
     }
+    
+
+    /**
+     * Get the Roster
+     *
+     * @return  Roster
+     */ 
+    public function getRoster()
+    {
+        return $this->roster;
+    }
+
+    /**
+     * Set the Roster
+     *
+     * @param  Roster  $roster  The Roster
+     *
+     * @return  self
+     */ 
+    public function setRoster(Roster $roster)
+    {
+        $this->roster = $roster;
+
+        return $this;
+    }
+
+    /**
+     * Get the Player's stats for the season
+     *
+     * @return  Statline
+     */ 
+    public function getSeasonStats()
+    {
+        return $this->seasonStats;
+    }
+
+    /**
+     * Set the Player's stats for the season
+     *
+     * @param  Statline  $seasonStats  The Player's stats for the season
+     *
+     * @return  self
+     */ 
+    public function setSeasonStats(Statline $seasonStats)
+    {
+        $this->seasonStats = $seasonStats;
+        return $this;
+    }
 }
