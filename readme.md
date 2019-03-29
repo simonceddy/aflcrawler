@@ -4,13 +4,13 @@ AFLCrawler is a PHP command line utility for fetching data from afltables.com (I
 
 It is very much a work in progress, and I'm going to go out on a limb and suggest it will have pretty limited use for your own project. Unless you need AFL stats...
 
-__Please note:__ currently utility simply performs a dump of the West Coast Eagles data. The next step is to allow persisting the results.
+__Please note:__ currently the utility simply performs a dump of the West Coast Eagles data. The next step is to allow persisting the results.
 
 ## What is it and why
 
 This utility provides a method for turning the data from AFL Tables into serializable objects.
 
-While AFLCrawler is definitiely a fairly niche utility, it provides me with a convenience method to make said data usable.
+While AFLCrawler is definitiely a fairly niche utility, it provides me with a convenient method to make said data usable.
 
 ## Issues and Bugs
 
