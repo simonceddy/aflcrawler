@@ -22,8 +22,12 @@
         "symfony/dom-crawler": "^4.2",
         "symfony/var-dumper": "^4.2",
         "symfony/console": "^4.2",
-        "symfony/process": "^4.2",
         "symfony/css-selector": "^4.2",
         "nesbot/carbon": "^2.14"
+    },
+    "require-dev": {
+        "predis/predis": "^1.1",
+        "doctrine/orm": "^2.6",
+        "symfony/yaml": "^4.2"
     }
 }

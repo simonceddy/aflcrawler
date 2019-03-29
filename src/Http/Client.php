@@ -8,13 +8,19 @@ class Client extends GuzzleClient
     public function __construct()
     {
         parent::__construct([
-            'base_uri' => 'https://afltables.com/afl'
+            'base_uri' => 'https://afltables.com/afl/'
         ]);
     }
 
-    public function getStats(int $season)
+    public function getSeason(int $season)
     {
         // validate season
-        return $this->request('GET', '/stats/'.$season.'.html');
+        return $this->request('GET', 'stats/'.$season.'.html');
+    }
+
+    public function ping(): bool
+    {
+        
+        return false;
     }
 }
