@@ -1,8 +1,9 @@
 <?php
-namespace AflCrawler\Factory;
+namespace AflCrawler\Factory\Basic;
 
 use AflCrawler\Model\ModelInterface;
 use AflCrawler\Model\Player;
+use AflCrawler\Factory\FactoryInterface;
 
 class PlayerFactory implements FactoryInterface
 {

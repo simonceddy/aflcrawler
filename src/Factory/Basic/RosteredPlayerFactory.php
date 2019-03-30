@@ -1,9 +1,10 @@
 <?php
-namespace AflCrawler\Factory;
+namespace AflCrawler\Factory\Basic;
 
 use AflCrawler\Model\ModelInterface;
 use AflCrawler\Model\RosteredPlayer;
 use AflCrawler\Model\Statline;
+use AflCrawler\Factory\FactoryInterface;
 
 class RosteredPlayerFactory implements FactoryInterface
 {

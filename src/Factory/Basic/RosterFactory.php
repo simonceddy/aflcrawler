@@ -1,8 +1,9 @@
 <?php
-namespace AflCrawler\Factory;
+namespace AflCrawler\Factory\Basic;
 
 use AflCrawler\Model\ModelInterface;
 use AflCrawler\Model\Roster;
+use AflCrawler\Factory\FactoryInterface;
 
 class RosterFactory implements FactoryInterface
 {

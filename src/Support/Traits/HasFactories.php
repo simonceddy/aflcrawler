@@ -1,25 +1,21 @@
 <?php
 namespace AflCrawler\Support\Traits;
 
+use AflCrawler\Factory\FactoryManager;
+
+
 trait HasFactories
 {
-    protected $factories = [];
+    protected $factories;
 
     public function factory(string $name)
     {
-        if (!isset($this->factories[$id = strtolower($name)])) {
-            if (strpos($name, '-')) {
-                $name = implode('', \array_map(function ($val) {
-                    return ucfirst($val);
-                }, explode('-', $name)));
-            }
-            if (!class_exists(
-                $cn = 'AflCrawler\\Factory\\'.(ucfirst($name)).'Factory'
-            )) {
-                throw new \LogicException('Could not find '.$cn);
-            }
-            $this->factories[$id] = new $cn;
-        }
-        return $this->factories[$id];
+        return $this->factories()->factory($name);
+    }
+
+    public function factories(): FactoryManager
+    {
+        isset($this->factories) ?: $this->factories = new FactoryManager();
+        return $this->factories;
     }
 }

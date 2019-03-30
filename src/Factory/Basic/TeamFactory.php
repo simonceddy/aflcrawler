@@ -1,9 +1,10 @@
 <?php
-namespace AflCrawler\Factory;
+namespace AflCrawler\Factory\Basic;
 
 use AflCrawler\Model\ModelInterface;
 use AflCrawler\Model\Team;
 use AflCrawler\Util\TeamResolver;
+use AflCrawler\Factory\FactoryInterface;
 
 class TeamFactory implements FactoryInterface
 {

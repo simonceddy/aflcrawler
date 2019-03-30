@@ -64,6 +64,6 @@ class Season extends Command
         $crawler = new SeasonTotalsCrawler($season);
         $output->writeln('Crawling response...');
         $result = $crawler->crawl($html);
-        dd($result['teams']['wc']);
+        dd($crawler->factories());
     }
 }

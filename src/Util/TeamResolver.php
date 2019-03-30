@@ -16,7 +16,7 @@ class TeamResolver
     private function locateData()
     {
         $dir = dirname(__DIR__, 2);
-        while (!file_exists($fn = $dir.'/config/teams.php')
+        while (!file_exists($fn = $dir.'/config/afl/teams.php')
             && $dir !== dirname($dir)
         ) {
             $dir = dirname($dir);
