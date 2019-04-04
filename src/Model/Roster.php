@@ -110,4 +110,9 @@ class Roster implements ModelInterface
     {
         return isset($this->rosteredPlayers[$number]);
     }
+
+    public function toArray()
+    {
+        
+    }
 }

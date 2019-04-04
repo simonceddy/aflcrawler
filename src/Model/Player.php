@@ -76,4 +76,9 @@ class Player implements ModelInterface
 
         return $this;
     }
+
+    public function toArray()
+    {
+        
+    }
 }

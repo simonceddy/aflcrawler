@@ -20,4 +20,14 @@ class Match implements ModelInterface
     protected $season;
 
     protected $round;
+
+    public function toArray()
+    {
+        return [
+            'homeTeam' => $this->homeTeam,
+            'awayTeam' => $this->awayTeam,
+            'season' => $this->season,
+            'round' => $this->round,
+        ];
+    }
 }

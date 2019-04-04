@@ -67,4 +67,9 @@ class Statline implements ModelInterface
         }, ARRAY_FILTER_USE_KEY);
         return $this;
     }
+
+    public function toArray()
+    {
+        return $this->getStats();
+    }
 }

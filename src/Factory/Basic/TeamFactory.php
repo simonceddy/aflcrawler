@@ -3,18 +3,10 @@ namespace AflCrawler\Factory\Basic;
 
 use AflCrawler\Model\ModelInterface;
 use AflCrawler\Model\Team;
-use AflCrawler\Util\TeamResolver;
 use AflCrawler\Factory\FactoryInterface;
 
 class TeamFactory implements FactoryInterface
 {
-    protected $teamResolver;
-
-    public function __construct(TeamResolver $teamResolver = null)
-    {
-        $this->teamResolver = $teamResolver ?? new TeamResolver;
-    }
-
     public function build(array $data): ModelInterface
     {
         $team = new Team;

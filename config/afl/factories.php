@@ -14,11 +14,12 @@ return [
         ],
 
         /**
-         * Laravel/Eloquent factories
+         * Laravel/Eloquent factories - requires Illuminate\Database and its
+         * dependencies.
          */
         'eloquent' => [
-            'player' => '',
-            'team' => '',
+            'player' => AflCrawler\Factory\Eloquent\PlayerFactory::class,
+            'team' => AflCrawler\Factory\Eloquent\TeamFactory::class,
             'roster' => '',
             'rostered-player' => ''
         ]

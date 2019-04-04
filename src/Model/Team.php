@@ -162,4 +162,9 @@ class Team implements ModelInterface
         $this->rosters[$season] = $roster;
         return $this;
     }
+
+    public function toArray()
+    {
+        
+    }
 }

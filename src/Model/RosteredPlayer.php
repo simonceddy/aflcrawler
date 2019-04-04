@@ -48,7 +48,7 @@ class RosteredPlayer implements ModelInterface
      *
      * @return  self
      */ 
-    public function setPlayer(Player $player)
+    public function setPlayer(ModelInterface $player)
     {
         $this->player = $player;
 
@@ -102,7 +102,7 @@ class RosteredPlayer implements ModelInterface
      *
      * @return  self
      */ 
-    public function setRoster(Roster $roster)
+    public function setRoster(ModelInterface $roster)
     {
         $this->roster = $roster;
 
@@ -130,5 +130,10 @@ class RosteredPlayer implements ModelInterface
     {
         $this->seasonStats = $seasonStats;
         return $this;
+    }
+
+    public function toArray()
+    {
+        
     }
 }

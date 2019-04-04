@@ -13,4 +13,4 @@ $html = file_get_contents(__DIR__.'/storage/2018.html');
 $crawler = new AflCrawler\Crawler\SeasonTotalsCrawler;
 $result = $crawler->crawl($html);
 //dd($crawler);
-dd($result['teams']['sk']);
+dd($result['teams']['wc']->getRoster(2018)->getRosteredPlayer(9));
