@@ -18,6 +18,18 @@ class Client extends GuzzleClient
         return $this->request('GET', 'stats/'.$season.'.html');
     }
 
+    public function getMatches(int $season)
+    {
+        // validate season
+        return $this->request('GET', 'seas/'.$season.'.html');
+    }
+
+    public function getPlayer(string $name)
+    {
+        $a = substr($name, 0, 1);
+        return $this->request('GET', 'stats/players/'.$a.'/'.$name.'.html');
+    }
+
     public function ping(): bool
     {
         

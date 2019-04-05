@@ -1,5 +1,5 @@
 <?php
-namespace AflCrawler\Console\Fetch;
+namespace AflCrawler\Console\Html;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -7,11 +7,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use AflCrawler\Http\Client;
 
-class HtmlSeason extends Command
+class Season extends Command
 {
     protected function configure()
     {
-        $this->setName('fetch:html:season')
+        $this->setName('html:season')
             ->setDescription(
                 'Fetch and store a local copy of a single season\'s html.'
             )
@@ -22,7 +22,7 @@ class HtmlSeason extends Command
             )
             ->addArgument(
                 'filename',
-                InputArgument::REQUIRED,
+                InputArgument::OPTIONAL,
                 'The name of the outputted file relative to current directory.'
             )
 
@@ -33,9 +33,9 @@ class HtmlSeason extends Command
     {
         $season = $input->getArgument('season');
         // todo: validate season
-        $filename = $input->getArgument('filename');
+        $filename = $input->getArgument('filename') ?? $season.'.html';
         
-        $filename = getcwd().'/'.$filename;
+        $filename = getcwd().'/storage/'.$filename;
         preg_match('/(\.[a-z]+)$/', $filename) ?: $filename .= '.html';
         
         $client = new Client;
