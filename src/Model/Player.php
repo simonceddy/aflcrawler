@@ -1,7 +1,7 @@
 <?php
 namespace AflCrawler\Model;
 
-class Player implements ModelInterface
+class Player implements ModelInterface, \JsonSerializable
 {
     /**
      * The player's surname
@@ -79,6 +79,14 @@ class Player implements ModelInterface
 
     public function toArray()
     {
-        
+        return [
+            'surname' => $this->surname,
+            'given_names' => $this->givenNames,
+        ];
+    }
+
+    public function jsonSerialize()
+    {
+        return $this->toArray();
     }
 }
