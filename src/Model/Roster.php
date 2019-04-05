@@ -1,8 +1,12 @@
 <?php
 namespace AflCrawler\Model;
 
+use AflCrawler\Support\Traits\HasSeason;
+
 class Roster implements ModelInterface
 {
+    use HasSeason;
+
     /**
      * The RosteredPlayers
      *
@@ -11,42 +15,11 @@ class Roster implements ModelInterface
     protected $rosteredPlayers = [];
 
     /**
-     * The season the roster is from.
-     *
-     * @var int
-     */
-    protected $season;
-
-    /**
      * The team that the Roster belongs to.
      *
      * @var Team
      */
     protected $team;
-
-    /**
-     * Get the season the roster is from.
-     *
-     * @return  int
-     */ 
-    public function getSeason()
-    {
-        return $this->season;
-    }
-
-    /**
-     * Set the season the roster is from.
-     *
-     * @param  int  $season  The season the roster is from.
-     *
-     * @return  self
-     */ 
-    public function setSeason(int $season)
-    {
-        $this->season = $season;
-
-        return $this;
-    }
 
     /**
      * Get the team that the Roster belongs to.

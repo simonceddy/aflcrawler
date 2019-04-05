@@ -1,8 +1,12 @@
 <?php
 namespace AflCrawler\Model;
 
+use AflCrawler\Support\Traits\HasSeason;
+
 class Match implements ModelInterface
 {
+    use HasSeason;
+
     /**
      * The Home Team
      *
@@ -16,8 +20,6 @@ class Match implements ModelInterface
      * @var [type]
      */
     protected $awayTeam;
-
-    protected $season;
 
     protected $round;
 

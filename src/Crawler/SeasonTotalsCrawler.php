@@ -5,12 +5,14 @@ use AflCrawler\Support\Mappings\SeasonTotalsMappings;
 use AflCrawler\Util\RegexHelper;
 use AflCrawler\Util\TeamResolver;
 use Symfony\Component\DomCrawler\Crawler;
-use AflCrawler\Support\Traits\HasFactories;
+use AflCrawler\Support\Traits\CurrentTeamAware;
 use AflCrawler\Support\Traits\ErrorStack;
+use AflCrawler\Support\Traits\HasFactories;
+use AflCrawler\Support\Traits\HasSeason;
 
 class SeasonTotalsCrawler implements CrawlerInterface
 {
-    use HasFactories, ErrorStack;
+    use HasFactories, HasSeason, ErrorStack, CurrentTeamAware;
 
     /**
      * The result data
@@ -28,20 +30,6 @@ class SeasonTotalsCrawler implements CrawlerInterface
      * @var AflCrawler\Support\Mappings\MappingsInterface
      */
     protected $map;
-
-    /**
-     * The Season the data is for
-     *
-     * @var int
-     */
-    protected $season;
-
-    /**
-     * The current team (if applicable)
-     *
-     * @var AflCralwer\Model\Team
-     */
-    protected $currentTm;
 
     /**
      * Resolver for Team names/locations
@@ -151,16 +139,6 @@ class SeasonTotalsCrawler implements CrawlerInterface
     }
 
     /**
-     * Internal helper for quickly accessing the short name of the current Team.
-     *
-     * @return false|string
-     */
-    private function tm()
-    {
-        return !$this->currentTm ? false : $this->currentTm->getShortName();
-    }
-
-    /**
      * Attempts to transform a table row into an array conforming to this
      * object's Mappings.
      *
@@ -207,29 +185,5 @@ class SeasonTotalsCrawler implements CrawlerInterface
         $this->result['teams'][$team->getShortName()] = $team;
         $this->currentTm = $team;
         return $team;
-    }
-
-    /**
-     * Get the Season the data is for
-     *
-     * @return  int
-     */ 
-    public function getSeason()
-    {
-        return $this->season;
-    }
-
-    /**
-     * Set the Season the data is for
-     *
-     * @param  int  $season  The Season the data is for
-     *
-     * @return  self
-     */ 
-    public function setSeason(int $season)
-    {
-        $this->season = $season;
-
-        return $this;
     }
 }
