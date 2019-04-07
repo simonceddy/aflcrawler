@@ -1,8 +1,14 @@
 <?php
 namespace AflCrawler\Model;
 
-class Player implements ModelInterface, \JsonSerializable
+class Player extends BaseModel implements ModelInterface, \JsonSerializable
 {
+    protected $fields = [
+        'surname',
+        'givenNames',
+        'careerStats'
+    ];
+
     /**
      * The player's surname
      *

@@ -9,6 +9,7 @@ use AflCrawler\Support\Traits\CurrentTeamAware;
 use AflCrawler\Support\Traits\ErrorStack;
 use AflCrawler\Support\Traits\HasFactories;
 use AflCrawler\Support\Traits\HasSeason;
+use AflCrawler\Support\Mapper;
 
 class SeasonTotalsCrawler implements CrawlerInterface
 {
@@ -27,7 +28,7 @@ class SeasonTotalsCrawler implements CrawlerInterface
     /**
      * The Column Mappings
      *
-     * @var AflCrawler\Support\Mappings\MappingsInterface
+     * @var \AflCrawler\Support\Mappings\MappingsInterface
      */
     protected $map;
 
@@ -99,7 +100,7 @@ class SeasonTotalsCrawler implements CrawlerInterface
                 && false !== $this->tm()
             ) {
                 foreach ($children as $child) {
-                    $player = $this->nodeToMap($child);
+                    $player = Mapper::mapNode($child, $this->map);
                     [$id, $model] = $this->handlePlayer($player);
                     $roster = $this->currentTm->getRoster($this->season);
                     $player['model'] = $model;
@@ -136,24 +137,6 @@ class SeasonTotalsCrawler implements CrawlerInterface
         }
         return $teamData;
         
-    }
-
-    /**
-     * Attempts to transform a table row into an array conforming to this
-     * object's Mappings.
-     *
-     * @param \DOMElement $node
-     * @return array
-     */
-    private function nodeToMap(\DOMElement $node)
-    {
-        $i = 0;
-        $data = [];
-        foreach ($node->childNodes as $col) {
-            $data[$this->map->mappings()[$i]] = $col->textContent;
-            $i++;
-        }
-        return $data;
     }
 
     /**
