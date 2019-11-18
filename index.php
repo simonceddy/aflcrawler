@@ -1,13 +1,19 @@
 <?php
 require __DIR__.'/vendor/autoload.php';
-/* 
-$result = AflCrawler\Crawl::season(__DIR__.'/storage/2011.html');
 
-dd($result['teams']['ge']->getRoster(2011)->getRosteredPlayer(14)); */
+use Symfony\Component\Console\Application;
+// use AflCrawler\Console;
 
-$crawler = new AflCrawler\Crawler\PlayerCrawler;
-$html = file_get_contents(__DIR__.'/storage/Gary_Ablett1.html');
+dd(new AflCrawler\Crawler());
 
-$result = $crawler->crawl($html);
+$app = new Application('AFLCrawler', '0.0.1');
 
-dd($result);
+/* $app->addCommands([
+    new Console\Fetch\Season(),
+    new Console\Html\Season(),
+    new Console\Html\Player(),
+    new Console\Html\Matches()
+]); */
+
+$app->run();
+

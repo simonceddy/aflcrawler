@@ -1,8 +1,11 @@
 {
     "name": "simoneddy/afltables-crawler",
-    "description": "Crawls afltables.com and converts stat stables into objects",
+    "description": "Crawls afltables.com",
     "type": "library",
     "license": "MIT",
+    "config":{
+        "bin-dir": "bin"
+    },
     "authors": [
         {
             "name": "Simon Eddy",
@@ -17,29 +20,24 @@
         }
     },
     "require": {
+        "doctrine/orm": "^2.6",
         "guzzlehttp/guzzle": "^6.3",
+        "nesbot/carbon": "^2.14",
         "symfony/browser-kit": "^4.2",
-        "symfony/dom-crawler": "^4.2",
         "symfony/console": "^4.2",
         "symfony/css-selector": "^4.2",
-        "nesbot/carbon": "^2.14",
-        "symfony/options-resolver": "^4.2"
+        "symfony/dom-crawler": "^4.2",
+        "symfony/finder": "^4.3",
+        "symfony/options-resolver": "^4.2",
+        "symfony/yaml": "^4.2",
+        "symfony/filesystem": "^4.3",
+        "pimple/pimple": "^3.2",
+        "league/pipeline": "^1.0",
+        "adbario/php-dot-notation": "^2.2"
     },
     "require-dev": {
-        "symfony/var-dumper": "^4.2",
-        "predis/predis": "^1.1",
-        "doctrine/orm": "^2.6",
-        "symfony/yaml": "^4.2",
-        "illuminate/support": "^5.8",
-        "illuminate/database": "^5.8",
-        "illuminate/events": "^5.8",
-        "illuminate/filesystem": "^5.8"
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "AflCrawler\\Support\\LaravelServiceProvider"
-            ]
-        }
+        "symfony/var-dumper": "^4.3",
+        "phpspec/phpspec": "^6.0",
+        "behat/behat": "^3.5"
     }
 }

@@ -1,0 +1,8 @@
+suites:
+  default:
+    psr4_prefix:  AflCrawler
+    namespace:    AflCrawler
+    spec_path:    tests
+    src_path:     src
+
+formatter.name:   pretty
