@@ -4,8 +4,9 @@ namespace AflCrawler;
 use Pimple\ServiceProviderInterface;
 use Pimple\Container;
 use GuzzleHttp\Client;
+use Symfony\Component\Console\Application;
 
-class HttpProvider implements ServiceProviderInterface
+class Provider implements ServiceProviderInterface
 {
     public function register(Container $c)
     {
@@ -18,6 +19,10 @@ class HttpProvider implements ServiceProviderInterface
                     )
                 ])
             );
+        };
+        
+        $c['cli'] = function () {
+            return new Application('AFLCrawler', '0.2.1');
         };
     }
 }

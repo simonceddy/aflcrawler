@@ -1,12 +1,17 @@
 <?php
 require __DIR__.'/vendor/autoload.php';
 
-use Symfony\Component\Console\Application;
-// use AflCrawler\Console;
+$app = include_once 'bootstrap/app.php';
 
-dd(new AflCrawler\Crawler());
+// $res = $app['client']->getSeason(2019);
 
-$app = new Application('AFLCrawler', '0.0.1');
+// $crawler = AflCrawler\Util\MakeCrawler::fromResponse($res, 'table');
+
+// dd($crawler->nodeName());
+
+dd($app);
+
+$console = $app['cli'];
 
 /* $app->addCommands([
     new Console\Fetch\Season(),
@@ -15,5 +20,5 @@ $app = new Application('AFLCrawler', '0.0.1');
     new Console\Html\Matches()
 ]); */
 
-$app->run();
+$console->run();
 

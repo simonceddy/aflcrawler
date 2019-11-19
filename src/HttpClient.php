@@ -15,9 +15,9 @@ class HttpClient
      */
     protected $guzzle;
 
-    public function __construct(Guzzle $guzzle)
+    public function __construct(Guzzle $guzzle = null)
     {
-        $this->guzzle = $guzzle;
+        $this->guzzle = $guzzle ?? new Guzzle();
     }
 
     public function __call($name, $arguments)
@@ -34,19 +34,19 @@ class HttpClient
     public function getSeason(int $season)
     {
         // validate season
-        return $this->request('GET', "stats/{$season}.html");
+        return $this->guzzle->get("stats/{$season}.html");
     }
 
     public function getMatches(int $season)
     {
         // validate season
-        return $this->request('GET', "seas/{$season}.html");
+        return $this->guzzle->get("seas/{$season}.html");
     }
 
     public function getPlayer(string $name)
     {
         $a = substr($name, 0, 1);
-        return $this->request('GET', "stats/players/{$a}/'{$name}.html");
+        return $this->guzzle->get("stats/players/{$a}/'{$name}.html");
     }
 
     public function ping(): bool

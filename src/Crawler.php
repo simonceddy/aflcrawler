@@ -1,18 +1,10 @@
 <?php
 namespace AflCrawler;
 
-use AflCrawler\Bootstrap\InitConfigFromFiles;
 use Pimple\Container;
 
 class Crawler
 {
-    /**
-     * The Crawler Config instance
-     *
-     * @var Config
-     */
-    protected $config;
-
     /**
      * The Pimple Container instance
      *
@@ -20,33 +12,9 @@ class Crawler
      */
     protected $container;
 
-    public function __construct()
+    protected function __construct(Container $container)
     {
-        $this->container = new Container();
-
-        $this->initConfig();
-
-        $this->initProviders();
-    }
-
-    private function initProviders()
-    {
-        $this->container->register(new HttpProvider());
-    }
-
-    private function initConfig()
-    {
-        if (!file_exists($path = dirname(__DIR__) . '/config')) {
-            throw new \LogicException(
-                'Cannot locate the Crawler configuration.'
-            );
-        }
-
-        $this->config = (new InitConfigFromFiles)->load($path);
-
-        $this->container['config'] = function () {
-            return $this->config;
-        };
+        $this->container = $container;
     }
 
     public function container()
@@ -57,9 +25,9 @@ class Crawler
     public function config(string $key = null, $default = null)
     {
         if ($key === null) {
-            return $this->config;
+            return $this->container['config'];
         }
 
-        return $this->config->get($key, $default);
+        return $this->container['config']->get($key, $default);
     }
 }
