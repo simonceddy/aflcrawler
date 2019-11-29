@@ -3,7 +3,8 @@
 namespace spec\AflCrawler\Bootstrap;
 
 use AflCrawler\Bootstrap\BootstrapCli;
-use AflCrawler\HttpClient;
+use AflCrawler\Console\Commands\FetchSeason;
+use AflCrawler\Requester;
 use PhpSpec\ObjectBehavior;
 use Pimple\Container;
 use Prophecy\Argument;
@@ -13,7 +14,8 @@ class BootstrapCliSpec extends ObjectBehavior
 {
     function let(Container $c)
     {
-        $c->offsetGet('client')->willReturn(new HttpClient());
+        $c->offsetGet('requester')->willReturn(new Requester());
+        $c->offsetGet('command.season')->willReturn(Argument::type(FetchSeason::class));
         $this->beConstructedWith($c);
     }
 

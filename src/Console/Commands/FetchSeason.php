@@ -70,6 +70,10 @@ EOT
         $domCrawler = MakeDomCrawler::fromResponse($response, 'table');
 
         $results = $this->crawler->crawl($domCrawler);
-        dd(count(end($results)['players']));
+
+        foreach ($results as $team) {
+            dd($team);
+        }
+        dd($results);
     }
 }

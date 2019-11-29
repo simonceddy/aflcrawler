@@ -4,6 +4,7 @@ namespace AflCrawler\Crawlers;
 use AflCrawler\AflCrawler;
 use AflCrawler\Util\LoopOverNodes;
 use AflCrawler\Util\NodeToCols;
+use AflCrawler\Util\RunGenerator;
 use AflCrawler\Util\TableHeading;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -15,6 +16,13 @@ class SeasonCrawler implements AflCrawler
      * @var array
      */
     protected $results = [];
+
+    /**
+     * Array of Generators created by the crawler.
+     *
+     * @var \Generator[]
+     */
+    protected $generators = [];
 
     /**
      * Array of columns in the order they will be processed.
@@ -32,38 +40,28 @@ class SeasonCrawler implements AflCrawler
     {
         $generator = LoopOverNodes::generator($nodes, function ($node) {
             if (($children = $node->childNodes)->count() > 2) {
-                $data = [];
-
                 $players = LoopOverNodes::generator($children, function ($child) {
                     return NodeToCols::map($child, $this->columns);
                 });
-
-                // dd($players);
-
-                foreach ($players as $child) {
-                    // dd($child->textContent);
-                    $data[] = $child;
-                }
-
-                return $data;
-
+                return RunGenerator::run($players);
             } elseif (TableHeading::matches($node->textContent)) {
                 $team = TableHeading::extractFrom($node->textContent);
                 return $team;
             }
         });
-
-        $data = [];
-        foreach ($generator as $process) {
-            if (!$process) {
-                continue;
-            }
-            $data[] = $process;
-        }
-
-        return $data;
+        
+        return RunGenerator::run($generator);
     }
 
+    /**
+     * Create a crawler for an AFL Tables season stats page.
+     * 
+     * Returns a Generator.
+     *
+     * @param Crawler $crawler
+     *
+     * @return \Generator
+     */
     public function crawl(Crawler $crawler)
     {
         foreach ($crawler as $el) {
@@ -71,13 +69,7 @@ class SeasonCrawler implements AflCrawler
                 // dd($el->textContent);
                 continue;
             }
-            [$team, $players] = $this->processNodes($el->childNodes);
-            $this->results[$team] = [
-                'team' => $team,
-                'players' => $players
-            ];
+            yield $this->processNodes($el->childNodes);
         }
-
-        return $this->results;
     }
 }
