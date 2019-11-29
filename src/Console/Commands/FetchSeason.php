@@ -69,24 +69,28 @@ EOT
 
         $domCrawler = MakeDomCrawler::fromResponse($response, 'table');
 
-        $results = $this->crawler->crawl($domCrawler);
+        $generator = $this->crawler->crawl($domCrawler);
 
         $fn = ($rootDir = dirname(__DIR__, 3)) . "/seasons/{$season}.json";
 
         if (!is_dir($seasonsDir = $rootDir . '/seasons')) {
             mkdir($seasonsDir);
         }
-        $contents = [];
+        $results = [];
 
-        foreach ($results as $data) {
-            [$team, $players] = $data;
-            $contents[] = [
-                'team' => $team, 
-                'players' => $players
-            ];
+        foreach ($generator as $data) {
+            if (count($data) === 2) {
+                [$team, $players] = $data;
+                $results[] = [
+                    'team' => $team, 
+                    'players' => $players
+                ];
+            }
         }
 
-        file_put_contents($fn, json_encode($contents, JSON_PRETTY_PRINT));
-        dd($results);
+        if (!empty($results)) {
+            file_put_contents($fn, json_encode($results, JSON_PRETTY_PRINT));
+        }
+        dd($generator);
     }
 }

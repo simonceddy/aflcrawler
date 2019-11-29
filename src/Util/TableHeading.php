@@ -4,7 +4,7 @@ namespace AflCrawler\Util;
 class TableHeading
 {
     public const REGEX_PATTERN = <<<EOT
-/(\[Players\sGame\sby\sGame\]\[Team\sGame\sby\sGame\]\#PlayerGMKIMKHBDIDAGLBHHOTKRBIFCLCGFFFABRCPUPCMMI1\%BOGA\%PSU)$/
+/((\[Players\sGame\sby\sGame\]\[Team\sGame\sby\sGame\]|\[Game\sby\sGame\])\#PlayerGMKIMKHBDIDAGLBHHOTKRBIFCLCGFFFABRCPUPCMMI1\%BOGA\%PSU)$/
 EOT;
 
     public static function matches(string $text): bool
