@@ -1,5 +1,5 @@
 <?php
-namespace AflCrawler;
+namespace AflCrawler\Contracts;
 
 use Symfony\Component\DomCrawler\Crawler;
 

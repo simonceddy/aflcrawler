@@ -1,6 +1,8 @@
 <?php
-use AflCrawler\Bootstrap\InitConfigFromFiles;
+// use AflCrawler\Bootstrap\InitConfigFromFiles;
+use AflCrawler\Config;
 use AflCrawler\Provider;
+use Eddy\DotConfig\LoadConfigFromPaths;
 use Pimple\Container;
 
 $c = new Container();
@@ -12,7 +14,9 @@ $c['config'] = function () {
         );
     }
     
-    return (new InitConfigFromFiles)->load($path);
+    return (new LoadConfigFromPaths([
+        'className' => Config::class
+    ]))->load($path);
 };
 
 $c->register(new Provider($c['config']));

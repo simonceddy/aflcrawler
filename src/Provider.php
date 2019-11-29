@@ -4,6 +4,8 @@ namespace AflCrawler;
 use AflCrawler\Bootstrap\BootstrapCli;
 use AflCrawler\Console\Commands\FetchSeason;
 use AflCrawler\Crawlers\SeasonCrawler;
+use AflCrawler\Support\ColumnMap;
+use Ds\Deque;
 use Pimple\ServiceProviderInterface;
 use Pimple\Container;
 use GuzzleHttp\Client;
@@ -42,7 +44,7 @@ class Provider implements ServiceProviderInterface
 
         $c['crawler.season'] = function ($c) {
             return new SeasonCrawler(
-                $this->config->get('crawlers.season.cols', [])
+                new Deque($this->config->get('crawlers.season.cols', []))
             );
         };
         

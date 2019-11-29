@@ -71,9 +71,22 @@ EOT
 
         $results = $this->crawler->crawl($domCrawler);
 
-        foreach ($results as $team) {
-            dd($team);
+        $fn = ($rootDir = dirname(__DIR__, 3)) . "/seasons/{$season}.json";
+
+        if (!is_dir($seasonsDir = $rootDir . '/seasons')) {
+            mkdir($seasonsDir);
         }
+        $contents = [];
+
+        foreach ($results as $data) {
+            [$team, $players] = $data;
+            $contents[] = [
+                'team' => $team, 
+                'players' => $players
+            ];
+        }
+
+        file_put_contents($fn, json_encode($contents, JSON_PRETTY_PRINT));
         dd($results);
     }
 }

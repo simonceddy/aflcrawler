@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cb0118ca6248c7b6f3d9edf88e24984c",
+    "content-hash": "07fe50ed4d0954c77273bf914b8d26f6",
     "packages": [
         {
             "name": "adbario/php-dot-notation",
@@ -1264,6 +1264,53 @@
             "time": "2019-11-20T06:59:06+00:00"
         },
         {
+            "name": "php-ds/php-ds",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-ds/polyfill.git",
+                "reference": "27bed3897f9c801604f5bdcb65b71eb61ec80099"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-ds/polyfill/zipball/27bed3897f9c801604f5bdcb65b71eb61ec80099",
+                "reference": "27bed3897f9c801604f5bdcb65b71eb61ec80099",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "php-ds/tests": "^1.2"
+            },
+            "suggest": {
+                "ext-ds": "to improve performance and reduce memory usage"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ds\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rudi Theunissen",
+                    "email": "rudolf.theunissen@gmail.com"
+                }
+            ],
+            "keywords": [
+                "data structures",
+                "ds",
+                "php",
+                "polyfill"
+            ],
+            "time": "2017-08-03T02:03:34+00:00"
+        },
+        {
             "name": "pimple/pimple",
             "version": "v3.2.3",
             "source": {
@@ -1451,6 +1498,49 @@
             ],
             "description": "A polyfill for getallheaders.",
             "time": "2019-03-08T08:55:37+00:00"
+        },
+        {
+            "name": "simoneddy/dot-config-loader",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/simonceddy/dot-config-loader.git",
+                "reference": "3d5e483c7f3c09a93f980589abebee61c5b5c59c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/simonceddy/dot-config-loader/zipball/3d5e483c7f3c09a93f980589abebee61c5b5c59c",
+                "reference": "3d5e483c7f3c09a93f980589abebee61c5b5c59c",
+                "shasum": ""
+            },
+            "require": {
+                "adbario/php-dot-notation": "^2.2",
+                "symfony/yaml": "^4.2"
+            },
+            "require-dev": {
+                "symfony/var-dumper": "^4.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Eddy\\DotConfig\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Simon Eddy",
+                    "email": "simon@simoneddy.com.au"
+                }
+            ],
+            "description": "Basic config file loader using Adbar/Dot",
+            "support": {
+                "source": "https://github.com/simonceddy/dot-config-loader/tree/master",
+                "issues": "https://github.com/simonceddy/dot-config-loader/issues"
+            },
+            "time": "2019-11-29T04:09:13+00:00"
         },
         {
             "name": "symfony/browser-kit",
@@ -3672,7 +3762,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "simoneddy/dot-config-loader": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],

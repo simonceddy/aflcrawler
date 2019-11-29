@@ -1,4 +1,5 @@
 <?php
+
 return [
     'season' => [
         'cols' => [
@@ -29,7 +30,7 @@ return [
             'bounces',
             'goal_assists',
             'time_on_ground',
-            'subbed'
+            'subbed',
         ]
     ]
 ];

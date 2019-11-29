@@ -1,22 +1,17 @@
 <?php
 namespace AflCrawler\Crawlers;
 
-use AflCrawler\AflCrawler;
+use AflCrawler\Contracts\AflCrawler;
+use AflCrawler\Support\ColumnContentMapper;
 use AflCrawler\Util\LoopOverNodes;
 use AflCrawler\Util\NodeToCols;
 use AflCrawler\Util\RunGenerator;
 use AflCrawler\Util\TableHeading;
+use Ds\Deque;
 use Symfony\Component\DomCrawler\Crawler;
 
 class SeasonCrawler implements AflCrawler
 {
-    /**
-     * Array of results from running the Crawler
-     *
-     * @var array
-     */
-    protected $results = [];
-
     /**
      * Array of Generators created by the crawler.
      *
@@ -27,11 +22,11 @@ class SeasonCrawler implements AflCrawler
     /**
      * Array of columns in the order they will be processed.
      *
-     * @var string[]
+     * @var Deque
      */
     protected $columns;
 
-    public function __construct(array $columns)
+    public function __construct(\Traversable $columns)
     {
         $this->columns = $columns;
     }
@@ -41,7 +36,11 @@ class SeasonCrawler implements AflCrawler
         $generator = LoopOverNodes::generator($nodes, function ($node) {
             if (($children = $node->childNodes)->count() > 2) {
                 $players = LoopOverNodes::generator($children, function ($child) {
-                    return NodeToCols::map($child, $this->columns);
+                    return NodeToCols::map(
+                        $child,
+                        $this->columns,
+                        new ColumnContentMapper()
+                    );
                 });
                 return RunGenerator::run($players);
             } elseif (TableHeading::matches($node->textContent)) {
