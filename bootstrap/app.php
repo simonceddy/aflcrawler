@@ -15,6 +15,6 @@ $c['config'] = function () {
     return (new InitConfigFromFiles)->load($path);
 };
 
-$c->register(new Provider());
+$c->register(new Provider($c['config']));
 
 return $c;

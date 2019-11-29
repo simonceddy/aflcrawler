@@ -6,7 +6,7 @@ use GuzzleHttp\Client as Guzzle;
 /**
  * Decorates GuzzleHttp\Client
  */
-class HttpClient
+class Requester
 {
     /**
      * The GuzzleHttp Client

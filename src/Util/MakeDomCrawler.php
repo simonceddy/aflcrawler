@@ -4,7 +4,7 @@ namespace AflCrawler\Util;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\DomCrawler\Crawler;
 
-class MakeCrawler
+class MakeDomCrawler
 {
     /**
      * Create a DomCrawler from a PSR7 Response

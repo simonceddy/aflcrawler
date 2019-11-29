@@ -2,13 +2,13 @@
 
 namespace spec\AflCrawler;
 
-use AflCrawler\HttpClient;
+use AflCrawler\Requester;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 use PhpSpec\ObjectBehavior;
 use Psr\Http\Message\ResponseInterface;
 
-class HttpClientSpec extends ObjectBehavior
+class RequesterSpec extends ObjectBehavior
 {
     function let(Client $guzzle)
     {
