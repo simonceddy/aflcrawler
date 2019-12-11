@@ -34,7 +34,7 @@
         "pimple/pimple": "^3.2",
         "league/pipeline": "^1.0",
         "adbario/php-dot-notation": "^2.2",
-        "simoneddy/dot-config-loader": "dev-master-symfony5",
+        "simoneddy/dot-config-loader": "dev-master",
         "php-ds/php-ds": "^1.2"
     },
     "require-dev": {

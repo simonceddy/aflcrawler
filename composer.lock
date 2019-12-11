@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a25e52a4cf43feb12a452cb4d4fe45df",
+    "content-hash": "9989f4f8262bd74a87332fa67232a0be",
     "packages": [
         {
             "name": "adbario/php-dot-notation",
@@ -953,16 +953,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.4.1",
+            "version": "6.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "0895c932405407fd3a7368b6910c09a24d26db11"
+                "reference": "dbc2bc3a293ed6b1ae08a3651e2bfd213d19b6a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/0895c932405407fd3a7368b6910c09a24d26db11",
-                "reference": "0895c932405407fd3a7368b6910c09a24d26db11",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/dbc2bc3a293ed6b1ae08a3651e2bfd213d19b6a5",
+                "reference": "dbc2bc3a293ed6b1ae08a3651e2bfd213d19b6a5",
                 "shasum": ""
             },
             "require": {
@@ -977,12 +977,13 @@
                 "psr/log": "^1.1"
             },
             "suggest": {
+                "ext-intl": "Required for Internationalized Domain Name (IDN) support",
                 "psr/log": "Required for using the Log middleware"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "6.3-dev"
+                    "dev-master": "6.5-dev"
                 }
             },
             "autoload": {
@@ -1015,7 +1016,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2019-10-23T15:58:00+00:00"
+            "time": "2019-12-07T18:20:45+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1500,16 +1501,16 @@
         },
         {
             "name": "simoneddy/dot-config-loader",
-            "version": "dev-master-symfony5",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simonceddy/dot-config-loader.git",
-                "reference": "6c71659dd0044fef632a65b177b972832951715b"
+                "reference": "a5156cea9d4df2e295fd8241fb949b337245974e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simonceddy/dot-config-loader/zipball/6c71659dd0044fef632a65b177b972832951715b",
-                "reference": "6c71659dd0044fef632a65b177b972832951715b",
+                "url": "https://api.github.com/repos/simonceddy/dot-config-loader/zipball/a5156cea9d4df2e295fd8241fb949b337245974e",
+                "reference": "a5156cea9d4df2e295fd8241fb949b337245974e",
                 "shasum": ""
             },
             "require": {
@@ -1539,7 +1540,7 @@
                 "source": "https://github.com/simonceddy/dot-config-loader/tree/master",
                 "issues": "https://github.com/simonceddy/dot-config-loader/issues"
             },
-            "time": "2019-11-29T04:04:48+00:00"
+            "time": "2019-12-11T02:30:50+00:00"
         },
         {
             "name": "symfony/browser-kit",
